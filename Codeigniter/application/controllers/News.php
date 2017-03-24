@@ -11,7 +11,7 @@ class News extends CI_Controller {
     public function index()
     {
         $data['news'] = $this->news_model->get_news();
-        $data['title'] = 'News archive';
+        $data['title'] = 'User Profile Archive';
  
         $this->load->view('templates/header', $data);
         $this->load->view('news/index', $data);
@@ -27,7 +27,7 @@ class News extends CI_Controller {
             show_404();
         }
  
-        $data['title'] = $data['news_item']['title'];
+        $data['title'] = $data['news_item']['Complete_Name'];
  
         $this->load->view('templates/header', $data);
         $this->load->view('news/view', $data);
@@ -39,10 +39,15 @@ class News extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
  
-        $data['title'] = 'Create a news item';
+        $data['title'] = 'Create a New User Profile';
  
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('text', 'Text', 'required');
+		$this->form_validation->set_rules('Complete_Name', 'Full Name', 'required');
+		$this->form_validation->set_rules('Nickname', 'Nickname', 'required');
+		$this->form_validation->set_rules('Email_Address', 'Email', 'required');
+		$this->form_validation->set_rules('Home_Address', 'Home Address');
+		$this->form_validation->set_rules('Gender', 'Gender', 'required');
+		$this->form_validation->set_rules('Cell_phone_number', 'Cellphone Number', 'required');
+		$this->form_validation->set_rules('Comments', 'Comments');
  
         if ($this->form_validation->run() === FALSE)
         {
@@ -72,11 +77,16 @@ class News extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         
-        $data['title'] = 'Edit a news item';        
+        $data['title'] = 'Edit User Profile';        
         $data['news_item'] = $this->news_model->get_news_by_id($id);
         
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('text', 'Text', 'required');
+		$this->form_validation->set_rules('Complete_Name', 'Full Name', 'required');
+		$this->form_validation->set_rules('Nickname', 'Nickname', 'required');
+		$this->form_validation->set_rules('Email_Address', 'Email', 'required');
+		$this->form_validation->set_rules('Home_Address', 'Home Address');
+		$this->form_validation->set_rules('Gender', 'Gender', 'required');
+		$this->form_validation->set_rules('Cell_phone_number', 'Cellphone Number', 'required');
+		$this->form_validation->set_rules('Comments', 'Comments');
  
         if ($this->form_validation->run() === FALSE)
         {

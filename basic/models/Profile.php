@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "profile".
+ * This is the model class for table "Profile".
  *
  * @property integer $id
  * @property string $title
@@ -18,8 +18,6 @@ use Yii;
  * @property string $Gender
  * @property integer $Cell_phone_number
  * @property string $Comments
- *
- * @property Trivia[] $trivias
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -28,7 +26,7 @@ class Profile extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'profile';
+        return 'Profile';
     }
 
     /**
@@ -67,13 +65,5 @@ class Profile extends \yii\db\ActiveRecord
             'Cell_phone_number' => 'Cell Phone Number',
             'Comments' => 'Comments',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTrivias()
-    {
-        return $this->hasMany(Trivia::className(), ['Profile_ID' => 'id']);
     }
 }
